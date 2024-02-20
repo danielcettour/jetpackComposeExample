@@ -1,4 +1,4 @@
-package com.example.todoapp
+package com.cursokotlin.todoapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,14 +8,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.todoapp.addtasks.ui.TasksScreen
-import com.example.todoapp.ui.theme.TodoAppTheme
+import com.cursokotlin.todoapp.addtasks.ui.TasksScreen
+import com.cursokotlin.todoapp.addtasks.ui.TasksViewModel
+import com.cursokotlin.todoapp.ui.theme.TodoAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    //private val tasksViewModel: TasksViewModel by viewModels()
+    private val tasksViewModel: TasksViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,10 +25,9 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.background,
                 ) {
-                    //TasksScreen(tasksViewModel)
-                    TasksScreen()
+                    TasksScreen(tasksViewModel)
                 }
             }
         }
